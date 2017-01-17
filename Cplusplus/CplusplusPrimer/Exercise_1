@@ -1,0 +1,37 @@
+#include <iostream>
+
+using std::cout; using std::cin; using std::endl;
+
+int main()
+{
+  /*
+  typedef chat *pstring // pointer to base type char
+  const pstring ctstr = 0; // const pointer to c
+  const char *ctstr = 0; // wrong base type. pointer to const char
+  chat *const cstr = 0; // correct way to interpret typedef const pointer to char
+  */
+  
+  
+  /*
+  Exercise 2.33
+  Top level const:
+    - object cannot be modified
+    eg) const int, int *const
+  Low level const:
+    - usually with pointer, pointer can be changed but object it is pointing cannot
+    ** const in reference in always low level
+    eg) const int*
+  */
+  
+  /*
+  auto
+    - it ignores top level const
+  decltype
+    - unlike auto, it returns top level const.
+    ** returns a reference type for expression that yield objects that can stand on the left-had side of the assignment
+    - decltype(i) e; returns variable type. it returns reference if variable is a reference
+    - decltype((i)) e; treats i as an expression and returns reference
+    - decltype(a = b) e; assignment returns reference
+  */
+  return 0;
+}
