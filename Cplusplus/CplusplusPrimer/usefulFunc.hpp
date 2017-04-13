@@ -2,7 +2,7 @@
 #include <string>
 
 // template func for printing stl containers
-template <typename> Container> inline void print (const Container &container)
+template <typename Container> inline void print (const Container &container)
 {
   for (auto i : container)
   {
