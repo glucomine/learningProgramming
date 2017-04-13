@@ -1,5 +1,8 @@
 #include <iostream>
 
+#include <algorithm> // contains generic algorithms
+#include <numeric>
+
 using std::cout; using std::cin; using std::endl;
 
 int main()
@@ -32,6 +35,27 @@ int main()
     - decltype(i) e; returns variable type. it returns reference if variable is a reference
     - decltype((i)) e; treats i as an expression and returns reference
     - decltype(a = b) e; assignment returns reference
+  */
+  
+  /*
+  Generic algorithms
+  find(iter, iter, value) // finds value within two iter range
+  count(iter, iter, value) // counts the occurance of value within iter range
+  accumulate(iter, iter, initial sum value) // sums numbers within iter range, in numeric header
+  equal(v1 iter, v1 iter, v2 iter) // compare elements in containers of different types
+  
+  fill(iter, iter, value) // fills the container with given value within the iter range
+  fill_n(iter, count, value) // fills container starting from iter position with given size and value
+  back_inserter(container) // returns aninsert iterator, in iterator header
+  copy(iter, iter, dest) // copy the content from iter range to dest container
+  replace(iter, iter, replace this, to this) // replace values to another given value within iter range
+  replace_copy(iter, iter, dest, replace this, to this) // makes a copy then do replace
+  
+  sort(iter, iter, predicate) // without predicate, it sorts in alphabetical order. predicate is used to customize sort func
+  unique(iter, iter) // returns the iter right after all the unique words
+  stable_sort(iter, iter) // maintains the original order among equal elements
+  
+  
   */
   return 0;
 }
