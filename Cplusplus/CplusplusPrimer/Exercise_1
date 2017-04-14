@@ -31,7 +31,7 @@ int main()
     - it ignores top level const
   decltype
     - unlike auto, it returns top level const.
-    ** returns a reference type for expression that yield objects that can stand on the left-had side of the assignment
+    ** returns a reference type for expression that yield objects that can stand on the left-hand side of the assignment
     - decltype(i) e; returns variable type. it returns reference if variable is a reference
     - decltype((i)) e; treats i as an expression and returns reference
     - decltype(a = b) e; assignment returns reference
@@ -39,22 +39,44 @@ int main()
   
   /*
   Generic algorithms
+  
   find(iter, iter, value) // finds value within two iter range
   count(iter, iter, value) // counts the occurance of value within iter range
+  count_if(iter, iter, predicate) // returns a count of how often the predicate is true
   accumulate(iter, iter, initial sum value) // sums numbers within iter range, in numeric header
   equal(v1 iter, v1 iter, v2 iter) // compare elements in containers of different types
   
   fill(iter, iter, value) // fills the container with given value within the iter range
   fill_n(iter, count, value) // fills container starting from iter position with given size and value
-  back_inserter(container) // returns aninsert iterator, in iterator header
+  back_inserter(container) // returns an insert iterator, in iterator header
   copy(iter, iter, dest) // copy the content from iter range to dest container
   replace(iter, iter, replace this, to this) // replace values to another given value within iter range
   replace_copy(iter, iter, dest, replace this, to this) // makes a copy then do replace
   
   sort(iter, iter, predicate) // without predicate, it sorts in alphabetical order. predicate is used to customize sort func
-  unique(iter, iter) // returns the iter right after all the unique words
   stable_sort(iter, iter) // maintains the original order among equal elements
+  unique(iter, iter) // returns the iter right after all the unique words
+  partition(iter, iter, predicate) // if predicate is true, it appears tn the first half and if predicate is false, it appears in last half.
+                                   // returns iter in the middle of partitioned container
+  stable_partition(iter, iter, predicate) // same as partition but it preserves the order of elements
   
+  find_if(iter, iter, predicate) // calls predicate on each elem in the input range
+  for_each(iter, iter, callable obj) // for each loop
+  
+  transform(iter, iter, iter, callable object) // first two iter is input range, third iter is destination. if first two iter and third iter is the same, it'll replace each elements in the input range 
+  */
+  
+  /*
+  lambda function
+  [capture list] (param list) return type { func body } // lambda return type is auto by default. no return in func body will have void as return type
+  *** must always include capture list and func body ***
+  [capture list] : defines what from the outside of the lambda should be available inside the function body and how
+  eg. [] {return x;};
+  
+  [&v] { return v; }; // capturing v by reference
+  [&, c] { } // capturing any variable by reference except c which is captured as value
+  [=, &c] { } // capturing any variable by value except c which is captured as reference
+  [v1] () mutable { return ++v1 } // change the value of a captured var. must have param list
   
   */
   return 0;
