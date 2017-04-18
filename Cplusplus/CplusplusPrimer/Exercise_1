@@ -48,8 +48,8 @@ int main()
   
   fill(iter, iter, value) // fills the container with given value within the iter range
   fill_n(iter, count, value) // fills container starting from iter position with given size and value
-  back_inserter(container) // returns an insert iterator, in iterator header
   copy(iter, iter, dest) // copy the content from iter range to dest container
+  unique_copy(iter, iter, dest) // copy unique elements to dest but source needs to be sorted first!
   replace(iter, iter, replace this, to this) // replace values to another given value within iter range
   replace_copy(iter, iter, dest, replace this, to this) // makes a copy then do replace
   
@@ -77,7 +77,30 @@ int main()
   [&, c] { } // capturing any variable by reference except c which is captured as value
   [=, &c] { } // capturing any variable by value except c which is captured as reference
   [v1] () mutable { return ++v1 } // change the value of a captured var. must have param list
+  */
   
+  /*
+  bind - c++11
+  in <functional> header
+  general purpose function adaptor
+  auto newCallable = bind(callable, args) where args can have form of _n (placeholders)
+  placeholders are in placeholders namespace. eg) std::placeholder::_1
+  
+  using bind, args can be swapped
+  eg) func(a,b);
+  bind(func, _2, _1) means func(b,a)
+  
+  bind copies its args therefore ostream obj cannpt be passed in bind. to pass an object to bind without copying, library ref func must be used
+  bind(func, ref(os), _1)
+  
+  ref, cref - non-const and const respectively. these are defined in <functional> header
+  */
+  
+  /*
+  ierators
+  back_inserter(container) // returns an insert iterator that inserts elements after iter, in iterator header
+  front_inserter(container) // same deal with back_inserter but it inserts before the iter. front inserting {1,2,3,4} to empty list is {4,3,2,1}
+  inserter(container, iter) // inserts elements before the givin iterator
   */
   return 0;
 }
