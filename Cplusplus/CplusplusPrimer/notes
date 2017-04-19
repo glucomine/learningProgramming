@@ -65,6 +65,17 @@ int main()
   
   transform(iter, iter, iter, callable object) // first two iter is input range, third iter is destination. 
                                                // if first two iter and third iter is the same, it'll replace each elements in the input range 
+  
+  list, forward_list specific members
+  list.merge(list2) // merges elements from list2 to list
+  list.remove(val)
+  list.remove_if(predicate)
+  list.reverse()
+  list.sort()
+  list.unique(predicate)
+  splice(iter, list2) // iter to an element in list. moves container elements just before iter
+  splice(iter, list2, iter2) // moves elements from iter2 in container2 to iter
+  splice(iter, list2, a, b) // a,b denotes range of container2
   */
   
   /*
@@ -94,7 +105,8 @@ int main()
   bind copies its args therefore ostream obj cannpt be passed in bind. to pass an object to bind without copying, library ref func must be used
   bind(func, ref(os), _1)
   
-  ref, cref - non-const and const respectively. these are defined in <functional> header
+  ref, cref - defined in <functional> header. returns a copyable object that holds a reference to a non-const/const object
+              of a type that cannot be copied. eg) istream
   */
   
   /*
