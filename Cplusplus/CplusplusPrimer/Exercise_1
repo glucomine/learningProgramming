@@ -63,12 +63,13 @@ int main()
   find_if(iter, iter, predicate) // calls predicate on each elem in the input range
   for_each(iter, iter, callable obj) // for each loop
   
-  transform(iter, iter, iter, callable object) // first two iter is input range, third iter is destination. if first two iter and third iter is the same, it'll replace each elements in the input range 
+  transform(iter, iter, iter, callable object) // first two iter is input range, third iter is destination. 
+                                               // if first two iter and third iter is the same, it'll replace each elements in the input range 
   */
   
   /*
   lambda function
-  [capture list] (param list) return type { func body } // lambda return type is auto by default. no return in func body will have void as return type
+  [capture list] (param list) return type { func body } // lambda return type is auto by default. default return type is void if no return in func
   *** must always include capture list and func body ***
   [capture list] : defines what from the outside of the lambda should be available inside the function body and how
   eg. [] {return x;};
@@ -97,10 +98,19 @@ int main()
   */
   
   /*
-  ierators
+  iterators
+  -Input iterator: Read, but not write. single-pass, increment only
+  -Output iterator: Write, but not read. single-pass, increment only
+  -Forward iterator: Read and write. multi-pass, increment only
+  -Bidirectional iterator: Read and write. multi-pass, increment and decrement
+  -Random-access iterator: Read and write. multi-pass, full iterator arithmatic
+  
   back_inserter(container) // returns an insert iterator that inserts elements after iter, in iterator header
   front_inserter(container) // same deal with back_inserter but it inserts before the iter. front inserting {1,2,3,4} to empty list is {4,3,2,1}
   inserter(container, iter) // inserts elements before the givin iterator
+  
+  reverse iterators
+  iter.base() gives iter after the elem that we are intersted in. find(rbegin, rend, 0) in {0, 0, 1, 1} will return iter on 3rd element
   */
   return 0;
 }
