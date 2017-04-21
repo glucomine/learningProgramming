@@ -1,0 +1,15 @@
+Associative containers
+
+Associative containers support lookup and retrieval by a key.
+
+ordered by key
+-map: associative array. key-value pairs.  ----
+-multimap: map with duplicate keys            |--- in <map>
+-set: container contains only key as value ---
+-multiset: set with duplicate keys            |--- in <set>
+
+unordered collection
+-unordered_map: map organized by a hash func ----
+-unordered_multimap                             |--- in <unordered_map>
+-unordered_set: set organized by a hash func ----
+-unordered_multiset                             |--- in <unordered_set>
