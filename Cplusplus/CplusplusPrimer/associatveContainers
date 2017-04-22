@@ -1,4 +1,6 @@
-Associative containers
+############################
+|  Associative containers  |
+############################
 
 Associative containers support lookup and retrieval by a key.
 
@@ -13,3 +15,17 @@ unordered collection
 -unordered_multimap                             |--- in <unordered_map>
 -unordered_set: set organized by a hash func ----
 -unordered_multiset                             |--- in <unordered_set>
+
+Comparison of ordered containers key type must be "strict weak ordering"
+eg. if k1 < k2, then k2 must never be less than k1
+if neither key is "less than" the other, those keys are "equivalent"
+
+###############
+|  Pair type  |
+###############
+
+-defined in <utility>
+
+-make_pair(v1, v2): returns a pair initialized from v1 and v2.
+-p.first, p.second : returns the public data member of p named first and second respectively
+- p1 (<, >, <=, >=, ==, !=) p2
