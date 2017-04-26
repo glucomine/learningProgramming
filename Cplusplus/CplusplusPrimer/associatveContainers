@@ -20,6 +20,13 @@ Comparison of ordered containers key type must be "strict weak ordering"
 eg. if k1 < k2, then k2 must never be less than k1
 if neither key is "less than" the other, those keys are "equivalent"
 
+auto ret = std::map.insert()
+ret.first returns a pair
+  |------ ret.first.first --- key value
+  |------ ret.first.second --- value
+ret.second returns bool telling whether insert operation was sucessful or not
+
+
 ###############
 |  Pair type  |
 ###############
@@ -29,3 +36,4 @@ if neither key is "less than" the other, those keys are "equivalent"
 -make_pair(v1, v2): returns a pair initialized from v1 and v2.
 -p.first, p.second : returns the public data member of p named first and second respectively
 - p1 (<, >, <=, >=, ==, !=) p2
+
