@@ -37,3 +37,13 @@ ret.second returns bool telling whether insert operation was sucessful or not
 -p.first, p.second : returns the public data member of p named first and second respectively
 - p1 (<, >, <=, >=, ==, !=) p2
 
+multiset and multimap
+c.lower_bound() - first encounter of key 
+c.upper_bound() - last encounter of key
+
+if key is not found and what we are looking for is smaller than container elements:
+-lower_bound and upper_bound returns equal iterator to the point at where new key can be inserted
+without disrupting the order
+
+if key is not found and what we are looking for is larger than container elements:
+-lower_bound and upper_bound returns equal iterator that points to the off end of container
