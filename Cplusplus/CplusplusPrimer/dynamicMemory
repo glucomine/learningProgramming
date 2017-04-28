@@ -1,0 +1,17 @@
+Defined in <memory>
+
+-shared_ptr: allows multiple pointers to refer to the same object
+-unique_ptr: only one pointer can point to an object
+-weak_ptr: weak refrence to an object managed by shared_ptr
+
+###################
+| Shared pointers |
+###################
+
+shared_ptr<T> p; // initialization similar to vector. it defaults to null pointer
+
+make_shared<T> (args) eg. shared_ptr<int> p = make_shared<int>(42) <-allocating shared_ptr
+shared_ptr<T> p(q)
+p = q
+p.unique() // returns true if p.use_count() is 1, else 0
+p.use_count() // returns number of objects sharing with p
