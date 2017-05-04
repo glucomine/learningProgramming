@@ -4,14 +4,64 @@ Defined in <memory>
 -unique_ptr: only one pointer can point to an object
 -weak_ptr: weak refrence to an object managed by shared_ptr
 
+smart pointer ctors that take pointers are explicit. only direct initialization is allowed
+
 ###################
 | Shared pointers |
 ###################
 
 shared_ptr<T> p; // initialization similar to vector. it defaults to null pointer
+shared_ptr<T> p(object, func) // when p is destroyed, p gets passed into func for additional processing
 
 make_shared<T> (args) eg. shared_ptr<int> p = make_shared<int>(42) <-allocating shared_ptr
 shared_ptr<T> p(q)
 p = q
 p.unique() // returns true if p.use_count() is 1, else 0
 p.use_count() // returns number of objects sharing with p
+p.reset() // if p is only shared_ptr pointing at its object, it free's p's existing object
+p.get() // returns a built-in pointer to the object that smart pointer is managing
+
+###################
+| Unique pointers |
+###################
+
+doesn't support copy and assignment with one exception. it can be copied or assigned if it is about to be destroyed
+unique_ptr<int> cline(int i)
+{
+  unique_ptr<int> ret(new int(i));
+  return ret;
+}
+
+unique_ptr<T> u; // will use delete to free the pointer
+unique_ptr<T, D> u; // will use callable object `D` to free the pointer
+unique_ptr<T, D> u(d); // will use `d` which must be a <T> D to free the pointer
+u = nullptr // deletes the object, makes u null
+u.release() // gives up the ownership of an object then u is null but object is not freed. returns ptr
+unique_ptr<T> p(p1.release()); // transfers ownership from p1 to p
+
+#################
+| Weak pointers |
+#################
+
+pointer that points to shared_ptr. it doesn't control the lifetime of an managed object.
+weak_ptr<T> w; // null weak_ptr
+weak_ptr<T> w(sp); // points to same object that shared_ptr is pointing
+w = p; // p can be shared or weak ptr. it shares ownership with p
+w.reset(); // make it null
+w.use_count(); // number of shared_ptr that shares ownership with w
+w.expired(); // true if w.use_count() is zero else false
+w.lock() // if w.expired() is true, returns null shared_ptr else returns a shared_ptr to the object which w points
+
+###############################
+| 'new' to initialize objects |
+###############################
+
+'new' returns a pointer to the object it allocates
+eg. string *ps = new string;
+
+c++11 allows auto keyword for both pointer and the object type
+eg. auto *pi = new auto(obj); // auto only works with single initializer insize parentheses
+
+if out of memory, 'new' expression will fail and throws 'bad_alloc' exception
+int *p = new (nothrow) int // suppress the 'bad_alloc' exception and returns a null pointer
+** bad_alloc and nothrow are in <new> **
