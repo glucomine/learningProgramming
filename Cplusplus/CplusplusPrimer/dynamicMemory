@@ -39,6 +39,9 @@ u = nullptr // deletes the object, makes u null
 u.release() // gives up the ownership of an object then u is null but object is not freed. returns ptr
 unique_ptr<T> p(p1.release()); // transfers ownership from p1 to p
 
+uniqiue_ptr<T[]> u // unique pointer to dymanic T array
+u[i] // accessing array elements
+
 #################
 | Weak pointers |
 #################
@@ -65,3 +68,16 @@ eg. auto *pi = new auto(obj); // auto only works with single initializer insize 
 if out of memory, 'new' expression will fail and throws 'bad_alloc' exception
 int *p = new (nothrow) int // suppress the 'bad_alloc' exception and returns a null pointer
 ** bad_alloc and nothrow are in <new> **
+
+##################
+| Dynamic arrays |
+##################
+
+delete [] p; // to delete dynamic array
+
+shared_ptr doesn't have subscript[] operation and smart ptrs do not support pointer arithmatics. to access elements
+int the array, need to get built in pointer by `get` and then do stuff
+eg. for(i = 0; i != 10; ++i)
+{
+  (p.get() + i) = i;
+}
