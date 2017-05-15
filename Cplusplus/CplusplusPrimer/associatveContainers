@@ -26,6 +26,33 @@ ret.first returns a pair
   |------ ret.first.second --- value
 ret.second returns bool telling whether insert operation was sucessful or not
 
+Type Aliases
+set<string>::value_type v1 // v1 is a string
+map<string, int>::value_type v3 // v3 is pair<const string, int>
+map<string, int>::key_type v4 // v4 is string
+map<string, int>::mapped_type v5 // v5 is an int
+
+Insert operation
+m.insert({v1, 1});
+m.insert(make_pair(v1, 1));
+m.insert(pair<string, size_t>(v1, 1));
+m.insert(map<string, size_t>::value_type(v1, 1));
+
+Erase operation
+m.erase(v1) // removes every v1 from m
+m.erase(p) // removes element pointed by p
+m.erase(b,e) // removes elements denoted by iterator b and e, returns e
+
+Find operation
+m.find(k) // finds k or returns m.end() if it doens't exist
+m.count(k) // number of elements by k
+m.lower_bound(k) // returns iter to first elem with k not less than k
+m.upper_bound(k) // returns iter to first elem with k greater than k
+m.equal_range(k) // returns pair of iter with k elem. if it doesn't exist, both are m.end()
+
+value at key
+m[k]
+m.at(k)
 
 ###############
 |  Pair type  |
