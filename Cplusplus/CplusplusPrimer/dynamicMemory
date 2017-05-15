@@ -81,3 +81,17 @@ eg. for(i = 0; i != 10; ++i)
 {
   (p.get() + i) = i;
 }
+
+#############
+| Allocator |
+#############
+
+separation of memory allocation from construction.
+
+allocator<T> a;
+a.allocate(n); // allocate raw, unconstructed memory to hold n object of T type
+a.deallocate(p, n); // p must be pointer returned by allocate, n must be size requested when p was created
+a.construct(p, args); // pointer to T that points to raw memory. args is used to construct object
+a.destroy(p); // runs destructor object pointed by p
+
+
