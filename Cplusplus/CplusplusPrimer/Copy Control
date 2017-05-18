@@ -1,0 +1,11 @@
+####################
+| Copy constructor |
+####################
+
+- compiler creates copy constructor by default if not provided
+
+Foo(const Foo&); // first param must be reference to const and usually should not be explicit
+Foo::Foo(const Foo &orig): // copy constructor that would be synthesized for Foo
+  a(orig.stuff),
+  b(orig.stuff2)
+  { }
