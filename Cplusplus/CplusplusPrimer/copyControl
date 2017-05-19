@@ -1,0 +1,25 @@
+####################
+| Copy constructor |
+####################
+
+- compiler creates copy constructor by default if not provided
+
+Foo(const Foo&); // first param must be reference to const and usually should not be explicit
+Foo::Foo(const Foo &orig): a(orig.stuff), b(orig.stuff2) { } // copy constructor that would be synthesized for Foo
+Foo & operator=(const Foo &) { return *this; } // copy assignment constructor
+
+- If class needs to define own dtor such as freeing dynamically allocated memory, 
+it needs copy and assignment ctor as well
+
+class Foo
+{
+public:
+  Foo(const std::string &s):ps(new std::string(s)){}
+  // synthesized copy and assignment copies the pointer member which Foo maybe pointing to the same memory location. 
+  // if copy gets deleted, ps pointer gets deleted multiple times resulting undefined behaviour.
+  ~Foo() { delete ps; }
+private:
+  std::string *ps;
+};
+
+- If class needs copy ctor, it usually needs copy-assignment operator and vice versa
